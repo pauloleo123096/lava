@@ -9,7 +9,7 @@ export function setupShaderCanvas(gl, canvas) {
     // The actual Lava Shader Code (GLSL)
     // This defines the visual quality for the masses.
     const fragmentShaderSource = `
-        precision mediump float;
+        precision highp float;
         uniform float u_time;
         uniform vec2 u_resolution;
 
