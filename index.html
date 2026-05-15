@@ -6,13 +6,20 @@
     <title>LVLUP: Floor is Lava AR</title>
     <style>
         body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; background: #111; }
-        #ar-canvas { width: 100vw; height: 100vh; display: block; }
+        /* The WebGL Lava Engine - Z-Index 1 (Bottom) */
+        #ar-canvas { width: 100vw; height: 100vh; display: block; position: absolute; top: 0; left: 0; z-index: 1;}
+        /* The 2D UI & Safe Zones - Z-Index 2 (Top) */
+        #ui-canvas { width: 100vw; height: 100vh; display: block; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;}
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- This is where the massive projector feed comes from -->
+    <video id="webcam" autoplay playsinline style="display: none;"></video>
+    
     <canvas id="ar-canvas"></canvas>
-    <!-- We will inject the code for shaders and MediaPipe next -->
+    <canvas id="ui-canvas"></canvas>
+
     <script type="module" src="app.js"></script>
 </body>
 </html>
