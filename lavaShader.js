@@ -99,6 +99,10 @@ export function setupShaderCanvas(gl, canvas) {
     // Render loop
     function render(time) {
         time *= 0.001; // convert to seconds
+        
+        // ADD THIS LINE: Tells WebGL to fill the whole canvas drawing buffer
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
         gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
         gl.uniform1f(timeUniformLocation, time);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
